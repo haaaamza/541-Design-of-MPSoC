@@ -1,66 +1,58 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2513
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww16340\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+Basic SystemC Implementation consisting of a SAD (sum of absolute differences) that is implemented with: a simple Memory System as well as a RTL implementation.
 
-\f0\fs24 \cf0 README:\
-\
-DESCRIPTION:\
-\
-The following files have the following function:\
-\
-main.cpp: main file that will call and run the simple and RTL functions.\
-define.h: Contains #define properties, can customize SAD properties.\
-simple_mem_if.h: memory interface between SAD and Memory.\
-SADcomp.cpp: Function that implements SAD for simple memory and RTL.\
-SADcomp.hpp: Class constructor/header file for SADcomp.cpp.\
-\
-\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97EXCLUSIVELY PART 1 FILES\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
-memory.cpp: Memory implementation without RTL and waits. \
-memread.hpp: Class constructor/header file for memory.cpp, wrapper for simple_mem_if, also writes file input data to memory.\
-\
-\'97\'97\'97\'97\'97\'97\'97\'97EXCLUSIVELY PART 2 FILES\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
-Oscillator.cpp: Function implements clock cycle/oscillator.\
-Oscillator.hpp: Class constructor/header file for oscillator.hpp.\
-mem_RTL.cpp: Implements a cycle-accurate RTL memory component .\
-mem_RTL.hpp: Class constructor/header file for mem_RTL.cpp, writes file input data to memory. Also runs rtl function on Clk.pos() with SC_Method.\
-memorySystem.cpp: Implements simple_mem_if interface with time delays for RTL component.\
-memorySystem.hpp: Class constructor/header file for memorySystem.cpp, wrapper for simple_mem_if, also writes file input data to memory. \
-				Initializes all signals b/w memory & RTL component, and b/w memory & oscillator.\
-\
-\
-\
-USAGE: \
-\
--Run Makefile to compile program and run tests. This can be done with: \'91make\'92 command in terminal. (Please see MAKEFILE INFO Section first.)\
-There are 3 arguments passed to the program:\
-	1) ./main\
-	2) For simple memory use \'92simp\'92 and for RTL implementation use \'91rtl\'92 as arguments passed to program.\
+-The RTL contains clock cycles and sc_logic signals that control Read/Write functionality.
+
+DESCRIPTION:
+
+The following files have the following function:
+
+main.cpp: main file that will call and run the simple and RTL functions.
+define.h: Contains #define properties, can customize SAD properties.
+simple_mem_if.h: memory interface between SAD and Memory.
+SADcomp.cpp: Function that implements SAD for simple memory and RTL.
+SADcomp.hpp: Class constructor/header file for SADcomp.cpp.
+
+-------------------------------------EXCLUSIVELY PART 1 FILES-------------------------------------
+memory.cpp: Memory implementation without RTL and waits. 
+memread.hpp: Class constructor/header file for memory.cpp, wrapper for simple_mem_if, also writes file input data to memory.
+
+-------------------------------------EXCLUSIVELY PART 2 FILES-------------------------------------
+Oscillator.cpp: Function implements clock cycle/oscillator.
+Oscillator.hpp: Class constructor/header file for oscillator.hpp.
+mem_RTL.cpp: Implements a cycle-accurate RTL memory component .
+mem_RTL.hpp: Class constructor/header file for mem_RTL.cpp, writes file input data to memory. Also runs rtl function on Clk.pos() with SC_Method.
+memorySystem.cpp: Implements simple_mem_if interface with time delays for RTL component.
+memorySystem.hpp: Class constructor/header file for memorySystem.cpp, wrapper for simple_mem_if, also writes file input data to memory. 
+				Initializes all signals b/w memory & RTL component, and b/w memory & oscillator.
+
+
+
+USAGE: 
+
+-Run Makefile to compile program and run tests. This can be done with: \'91make\'92 command in terminal. (Please see MAKEFILE INFO Section first.)
+There are 3 arguments passed to the program:
+	1) ./main
+	2) For simple memory use 'simp' and for RTL implementation use 'rtl' as arguments passed to program.
 	3) The location of the memory initialize file. If the file is in the same folder as the make, simply typing the full name of the file including type is 		sufficient.\
-\
-Example Usage:\
-e.g 1)\
+
+Example Usage:
+e.g 1)
+		make
+		./main rtl mem_init.txt
+e.g 2)
 		make\
-		./main rtl mem_init.txt\
-e.g 2)\
-		make\
-		./main simp /Users/hamza/Desktop/mem_init.txt\
-\
-MAKEFILE INFO:\
-	-Makefile is built around the compiler used: Clang++98.\
-	-In the makefile please alter SYSTEMC to be the location of your SystemC installation directory.\
-	-Alter SYSTEMC_ARCH to be your computer architecture (for which you installed SystemC in), e.g. linux64, macosx64\
-\
-CLEANUP:\
-	-run the command \'91make clean\'92 after running the program to delete executables and extraneous output files from the simulation.\
-	-this gets directory back to fresh state with just source code and with just source code and Makefile.\
-		\
-e.g:		make clean\
-\
-fin.\
-\
-\
-\
-}
+		./main simp /Users/hamza/Desktop/mem_init.txt
+
+MAKEFILE INFO:
+	-Makefile is built around the compiler used: Clang++98.
+	-In the makefile please alter SYSTEMC to be the location of your SystemC installation directory.
+	-Alter SYSTEMC_ARCH to be your computer architecture (for which you installed SystemC in), e.g. linux64, macosx64
+
+CLEANUP:
+	-run the command 'make clean' after running the program to delete executables and extraneous output files from the simulation.
+	-this gets directory back to fresh state with just source code and with just source code and Makefile.
+		
+e.g:		make clean
+
+fin.
+
