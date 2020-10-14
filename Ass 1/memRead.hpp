@@ -19,7 +19,7 @@ public:
     virtual bool Read(unsigned int addr, unsigned int& data);
     
     memory(sc_module_name name, char* filename) :sc_module(name) { //reused from Part 2!
-        std::ifstream outfp("Input.txt"); //ifstream tutorial from Fredosaurus, tutorialspoint.
+        std::ifstream outfp(filename); //ifstream tutorial from Fredosaurus, tutorialspoint.
         if (!outfp){
             cout << "Couldn't open file!\n";
             exit(1);

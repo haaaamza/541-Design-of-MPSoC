@@ -22,28 +22,8 @@ bool memory :: Read(unsigned int addr, unsigned int& data){
     if (addr > MEM_SIZE){
         return false;
     }
-    std::cout<< "\nThe address is:"<< addr;
+//    std::cout<< "\nThe address is:"<< addr;
     data = static_cast<unsigned int>(mem[addr]);
     return true;
 }
 
-//void memory:: mem_file (char* filename) {
-//    //open input file
-//    std::ifstream outfp(filename);
-//    if (!outfp == false){
-//        printf("Couldn't open file!");
-//        exit(0);
-//    }
-//    
-//    unsigned int data, i = 0;
-//    while(outfp >> data){
-//        if (i < MEM_SIZE){
-//            mem[i] = data;
-//            i++;
-//            
-//        }else {
-//            break;
-//        }
-//    }
-//    //outfp.close(); needed?
-//}

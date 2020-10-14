@@ -17,12 +17,12 @@ public:
     sc_in <int> DataIn;
     sc_out <int> DataOut;
     sc_out <sc_logic> Ack;
-    int mem[MEM_SIZE] = {0};
+    unsigned int mem[MEM_SIZE] = {0};
     
     SC_HAS_PROCESS(MEMORY_RTL);
     
     MEMORY_RTL(sc_module_name name, char* memInitFilename) :sc_module(name){
-        std::ifstream outfp("Input.txt"); //ifstream tutorial from Fredosaurus, tutorialspoint.
+        std::ifstream outfp(memInitFilename); //ifstream tutorial from Fredosaurus, tutorialspoint.
         if (!outfp){
             cout << "Couldn't open file!\n";
             exit(1);

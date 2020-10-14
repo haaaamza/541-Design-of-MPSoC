@@ -21,9 +21,9 @@ SC_MODULE(saad){
 
     int i,v;
     unsigned int block, sad;
+    sc_time start_time, end_time;
 
     sc_port<simple_mem_if> MEMORY;
-    sc_time  start_time, end_time;
 
     void func();
      
